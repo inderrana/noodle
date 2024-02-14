@@ -6,7 +6,6 @@ from hugchat import hugchat
 st.set_page_config(page_title="noodle", page_icon="🍜")
 
 
-
 st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
@@ -36,6 +35,8 @@ st.markdown(f"""
 # Function to generate a random access token (cookie)
 def generate_access_token():
     return secrets.token_hex(16)
+    
+st.session_state.access_token = generate_access_token()
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
