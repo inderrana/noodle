@@ -36,8 +36,6 @@ st.markdown(f"""
 def generate_access_token():
     return secrets.token_hex(16)
     
-st.session_state.access_token = generate_access_token()
-
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "How may I help you?"}]
@@ -69,7 +67,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
 
 # Sidebar options
-st.sidebar.title("Session Options")
-if st.sidebar.button("Start Session", key="start_session"):
+st.sidebar.title("Noodley do")
+if st.sidebar.button("Start/Reset Session", key="start_session"):
     st.session_state.access_token = generate_access_token()
     st.sidebar.success("Session Started")
