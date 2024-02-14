@@ -3,7 +3,7 @@ import secrets
 from hugchat import hugchat
 
 # App title
-st.set_page_config(page_title="Sushi", page_icon="🖖")
+st.set_page_config(page_title="noodle", page_icon="🍜")
 
 
 
