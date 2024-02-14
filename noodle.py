@@ -67,7 +67,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
 
 # Sidebar options
-st.sidebar.title("Noodley do")
+st.sidebar.title("Noodley do🍜🍜🍜🍜")
 if st.sidebar.button("Start/Reset Session", key="start_session"):
     st.session_state.access_token = generate_access_token()
     st.sidebar.success("Session Started")
