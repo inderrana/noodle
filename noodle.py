@@ -41,11 +41,11 @@ if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "How may I help you?"}]
 
 # Function for generating LLM response
-def generate_response(prompt_input, access_token):
+def generate_response(prompt_input, access_token, web_search=False):
     # Create ChatBot
     cookies = {"hf_token": access_token}
     chatbot = hugchat.ChatBot(cookies=cookies)
-    return chatbot.chat(prompt_input)
+    return chatbot.chat(prompt_input, web_search=web_search)
 
 # User-provided prompt
 if prompt := st.chat_input(disabled="access_token" not in st.session_state):
@@ -67,7 +67,21 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
 
 # Sidebar options
-st.sidebar.title("Noodley do🍜🍜🍜🍜")
-if st.sidebar.button("Start/Reset Session", key="start_session"):
+st.sidebar.title("Noodley Options🍜🍜")
+
+st.sidebar.write("---")
+
+# Start/reset conversation button
+if st.sidebar.button("Start/Reset Conversation"):
     st.session_state.access_token = generate_access_token()
-    st.sidebar.success("Session Started")
+    st.session_state.conversation_id = None
+    st.sidebar.success("Conversation Started")
+
+
+st.sidebar.write("---")
+
+
+if st.sidebar.checkbox("What does this button do?", key="show_giphy"):
+    st.sidebar.image("https://media.giphy.com/media/3ov9jQX2Ow4bM5xxuM/giphy.gif", caption="😇", use_column_width=True)
+
+
